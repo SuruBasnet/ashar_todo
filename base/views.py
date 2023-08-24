@@ -8,5 +8,5 @@ def home(request):
     content = {'todo':todo_objects} 
     return render(request,'index.html',context=content)
 
-def about(request):
-    return HttpResponse('We do programming!')
+def create(request):
+    return render(request,'create.html')

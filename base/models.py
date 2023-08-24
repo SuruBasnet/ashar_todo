@@ -9,4 +9,4 @@ class ToDo(models.Model):
     status = models.CharField(max_length=50,choices=status_list)
 
     def __str__(self):
-        return self.name
+        return self.todo_name
