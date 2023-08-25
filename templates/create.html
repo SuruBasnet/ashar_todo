@@ -9,21 +9,22 @@
 </head>
 <body>
     <h1>Create</h1>
-
-    <form>
+    <a href="{% url 'home' %}">Home page</a>
+    <form method="POST">
+        {% csrf_token %}
         <div class="mb-3">
             <label for="name" >Todo Name</label>
-            <input type="text" class="form-control" id="name">
+            <input type="text" class="form-control" id="name" name="todo_name">
         </div>
         <div class="mb-3" >
             <label for="description">Description</label>
-            <textarea class="form-control"  id="description"></textarea>
+            <textarea class="form-control"  id="description" name="description"></textarea>
         </div>
         <div class="mb-3">
             <label for="status">Status</label>
-            <select class="form-select" id="status" aria-label="Floating label select example">
-              <option value="1">Done</option>
-              <option value="2">Not done</option>
+            <select class="form-select" id="status" aria-label="Floating label select example" name="status">
+              <option value="Done">Done</option>
+              <option value="Not done">Not done</option>
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
