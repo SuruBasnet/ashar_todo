@@ -14,17 +14,22 @@
             {% csrf_token %}
             <div class="mb-3">
                 <label for="name" >Todo Name</label>
-                <input type="text" class="form-control" id="name" name="todo_name" value="{{object.todo_name}}">
+                <input type="text" class="form-control" id="name" name="name" value="{{object.todo_name}}">
             </div>
             <div class="mb-3" >
                 <label for="description">Description</label>
-                <textarea class="form-control"  id="description" name="description"></textarea>
+                <textarea class="form-control"  id="description" name="description">{{object.description}}</textarea>
             </div>
             <div class="mb-3">
                 <label for="status">Status</label>
-                <select class="form-select" id="status" aria-label="Floating label select example" name="status">
-                <option value="Done">Done</option>
-                <option value="Not done">Not done</option>
+                <select class="form-select" id="status" aria-label="Floating label select example" name="status" >
+                    {% if object.status == 'Done' %}
+                        <option value="Done" selected >Done</option>
+                        <option value="Not done" >Not done</option>
+                    {% elif object.status == 'Not done'  %}
+                        <option value="Done"  >Done</option>
+                        <option value="Not done" selected>Not done</option>
+                    {% endif %}
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -44,8 +49,8 @@
             <div class="mb-3">
                 <label for="status">Status</label>
                 <select class="form-select" id="status" aria-label="Floating label select example" name="status">
-                <option value="Done">Done</option>
-                <option value="Not done">Not done</option>
+                <option value="Done" >Done</option>
+                <option value="Not done" >Not done</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>

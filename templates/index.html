@@ -27,7 +27,7 @@
                     <td>{{i.todo_name}}</td>
                     <td>{{i.description}}</td>
                     <td>{{i.status}}</td>
-                    <td><button type="button" class="btn btn-warning"><a href="{% url 'edit' pk=i.id %}">Edit</a></button></td>
+                    <td><a href="{% url 'edit' pk=i.id %}"><button type="button" class="btn btn-warning">Edit</button></a></td>
                 </tr>
             {% endfor %}
         </tbody>

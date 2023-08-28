@@ -20,5 +20,14 @@ def create(request):
 
 def edit(request,pk):
     todo_object = ToDo.objects.get(id=pk)
+    if request.method == 'POST':
+        new_todo_name = request.POST.get('name')
+        new_description = request.POST.get('description')
+        new_status = request.POST.get('status')
+        todo_object.todo_name = new_todo_name
+        todo_object.description = new_description
+        todo_object.status = new_status
+        todo_object.save()
+        return redirect(to='home')
     content = {'method':'edit','object':todo_object}
     return render(request,'create.html',context=content)
