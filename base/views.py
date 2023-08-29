@@ -31,3 +31,8 @@ def edit(request,pk):
         return redirect(to='home')
     content = {'method':'edit','object':todo_object}
     return render(request,'create.html',context=content)
+
+def delete(request,id):
+    todo_object = ToDo.objects.get(id=id) # Get query only gets a single object with specified value for a field
+    todo_object.delete()
+    return redirect(to='home')
